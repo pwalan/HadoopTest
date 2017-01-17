@@ -201,9 +201,4 @@ public class OperatingHDFS {
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        OperatingHDFS ofs = new OperatingHDFS();
-        ofs.catFile("/user/alanp/input/test.txt");
-    }
-
 }
