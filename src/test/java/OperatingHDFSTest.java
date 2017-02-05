@@ -1,4 +1,4 @@
-import com.github.pwalan.OperatingHDFS;
+import com.github.pwalan.hdfs.OperatingHDFS;
 import org.junit.Test;
 import java.io.IOException;
 

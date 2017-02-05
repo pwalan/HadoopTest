@@ -1,4 +1,4 @@
-package com.github.pwalan;
+package com.github.pwalan.hdfs;
 
 import java.io.File;
 import java.io.FileNotFoundException;
