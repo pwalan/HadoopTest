@@ -19,7 +19,7 @@ import org.apache.hadoop.security.UserGroupInformation;
  * 远程操作HDFS
  *
  * @author AlanP
- * @Date 2017/1/9
+ * @Date 2017/3/19
  */
 public class OperatingHDFS {
     public static String HDFS_URL="hdfs://192.168.213.128:9000/";
