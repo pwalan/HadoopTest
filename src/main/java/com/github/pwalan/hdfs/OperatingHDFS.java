@@ -22,7 +22,7 @@ import org.apache.hadoop.security.UserGroupInformation;
  * @Date 2017/3/19
  */
 public class OperatingHDFS {
-    public static String HDFS_URL="hdfs://192.168.213.128:9000/";
+    public static String HDFS_URL="hdfs://192.168.213.131:9000/";
     public static String USERNAME="alanp";
     /**
      * 静态初始化
@@ -75,7 +75,7 @@ public class OperatingHDFS {
      * @param hdfsDst
      * @throws IOException
      */
-    public void copyFile(String localSrc, String hdfsDst) throws IOException {
+    public void putFile(String localSrc, String hdfsDst) throws IOException {
         Path src = new Path(localSrc);
         Path dst = new Path(hdfsDst);
         if (!(new File(localSrc)).exists()) {
