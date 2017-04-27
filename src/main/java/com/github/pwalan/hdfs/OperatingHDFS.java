@@ -22,7 +22,7 @@ import org.apache.hadoop.security.UserGroupInformation;
  * @Date 2017/3/19
  */
 public class OperatingHDFS {
-    public static String HDFS_URL="hdfs://192.168.213.131:9000/";
+    public static String HDFS_URL="hdfs://192.168.213.128:9000/";
     public static String USERNAME="alanp";
     /**
      * 静态初始化
