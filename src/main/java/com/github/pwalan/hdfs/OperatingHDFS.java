@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.PrivilegedExceptionAction;
+import java.util.Properties;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataOutputStream;
@@ -22,17 +23,28 @@ import org.apache.hadoop.security.UserGroupInformation;
  * @Date 2017/3/19
  */
 public class OperatingHDFS {
-    public static String HDFS_URL="hdfs://192.168.213.128:9000/";
-    public static String USERNAME="alanp";
+    public static String HDFS_URL="";
+    public static String USERNAME="";
     /**
      * 静态初始化
      */
     static Configuration conf = new Configuration();
     static FileSystem hdfs;
-
     static {
+        //从配置文件中读取HDFS_URL和USERNAME
+        InputStream in = OperatingHDFS.class.getClassLoader().getResourceAsStream("com/github/pwalan/hdfs/hdfs.properties");
+        Properties prop = new Properties();
+        try {
+            prop.load(in);
+            in.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        HDFS_URL=prop.getProperty("HDFS_URL");
+        USERNAME=prop.getProperty("USERNAME");
+        //开始初始化
         UserGroupInformation ugi = UserGroupInformation
-                .createRemoteUser("alanp");
+                .createRemoteUser(USERNAME);
         try {
             ugi.doAs(new PrivilegedExceptionAction<Void>() {
                 public Void run() throws Exception {
@@ -90,8 +102,9 @@ public class OperatingHDFS {
         }
         String dstPath = dst.toUri() + "/" + src.getName();
         if (hdfs.exists(new Path(dstPath))) {
-            System.out.println("Warn: dest file \t" + dstPath
-                    + "\t already exists.");
+            deleteFile(dstPath);
+            /*System.out.println("Warn: dest file \t" + dstPath
+                    + "\t already exists.");*/
         }
         hdfs.copyFromLocalFile(src, dst);
         // list all the files in the current direction

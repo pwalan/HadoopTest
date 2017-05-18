@@ -18,9 +18,9 @@ public class OperatingHDFSTest {
     @Test
     public void testPutFile() throws IOException{
         OperatingHDFS ofs = new OperatingHDFS();
-        //将本地文件拷贝到hdfs上，C:\Users\pwala\Desktop
+        //将本地文件拷贝到hdfs上
         long start=System.currentTimeMillis();
-        ofs.putFile("C:\\Users\\pwala\\Desktop\\data\\2016063000.log","/user/alanp/test");
+        ofs.putFile("C:\\Users\\pwala\\Desktop\\data\\dataset1\\20160630.log","/user/alanp/test");
         System.out.println("执行耗时 : "+(System.currentTimeMillis()-start)/1000f+" 秒 ");
     }
 
@@ -29,7 +29,7 @@ public class OperatingHDFSTest {
         OperatingHDFS ofs = new OperatingHDFS();
         //查看文件内容
         long start=System.currentTimeMillis();
-        ofs.catFile("/user/alanp/test/2016063000.log");
+        ofs.catFile("/user/alanp/input/2016063000.log");
         System.out.println("执行耗时 : "+(System.currentTimeMillis()-start)/1000f+" 秒 ");
     }
 
